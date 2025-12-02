@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peter Zee Catalog</title>
+
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { text-align: center; color: #333; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; vertical-align: top; }
+        th { background-color: #f2f2f2; font-weight: bold; }
+
+        .main-photo-col img { max-width: 150px; display: block; margin: 0 auto; }
+
+        .lightbox-link {
+            cursor: pointer;
+            color: #0066cc;
+            text-decoration: underline;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 20;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            overflow: auto;
+            background: rgba(0,0,0,0.9);
+        }
+
+        .lightbox-content {
+            margin: 60px auto;
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+            text-align: center;
+        }
+
+        .lightbox-content img {
+            width: 100%;
+            height: auto;
+        }
+
+        .close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            padding: 16px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            user-select: none;
+        }
+
+        .prev { left: 0; transform: translateY(-50%); }
+        .next { right: 0; transform: translateY(-50%); }
+
+        .prev:hover, .next:hover, .close:hover {
+            color: #ddd;
+        }
+
+        /* small helper to visually hide the image-list containers */
+        .image-list { display:none; }
+    </style>
+</head>
+
+<body>
+
+<h1>Peter Zee Catalog for Sale</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Main Photo</th>
+        <th>Description</th>
+        <th>Measures</th>
+        <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <!-- ITEM 1 -->
+    <tr>
+        <td class="main-photo-col">
+            <img src="../Photos_Catalog_Peter_Zee/L_Meyer/L_Meyer.png" alt="Louis Meijer">
+        </td>
+        <td>
+            <strong>Lot 1: Louis Meijer marine painting</strong><br>
+            Seascape by L. Meijer (1809–1866)
+        </td>
+        <td>
+            H: 14 cm<br>W: 20 cm
+        </td>
+        <td>
+            <span class="lightbox-link" onclick="openLightbox('item1')">
+                View Details
+            </span>
+        </td>
+    </tr>
+
+    <!-- ITEM 2 -->
+    <tr>
+        <td class="main-photo-col">
+            <img src="../Photos_Catalog_Peter_Zee/Marine_Painting_Board/Marine_Front.jpg" alt="Marine Painting">
+        </td>
+        <td>
+            <strong>Lot 2: Marine Painting on Board</strong><br>
+            Marine Painting on Board
+        </td>
+        <td>
+            H: 20 cm<br>W: 26 cm
+        </td>
+        <td>
+            <span class="lightbox-link" onclick="openLightbox('item2')">
+                View Details
+            </span>
+        </td>
+    </tr>
+
+<!-- ITEM 3 -->
+    <tr>
+        <td class="main-photo-col">
+            <img src="../Photos_Catalog_Peter_Zee/Koekkoek/Koekkoek_Front.jpg" alt="Hermanus Koekkoek">
+        </td>
+        <td>
+            <strong>Lot 3: Marine Painting</strong><br>
+            Seascape attributed to Hermanus Koekkoek (1813–1882)
+        </td>
+        <td>
+            H: 24 cm<br>W: 28 cm
+        </td>
+        <td>
+            <span class="lightbox-link" onclick="openLightbox('item3')">
+                View Details
+            </span>
+        </td>
+    </tr>
+
+<!-- ITEM 4 -->
+    <tr>
+        <td class="main-photo-col">
+            <img src="../Photos_Catalog_Peter_Zee/C_Jocker_Painting/Painting_Jewish_Lady_Full.jpeg" alt="C_Jocker">
+        </td>
+        <td>
+            <strong>Lot 4: Painting on canvas</strong><br>
+            Portrait of a young jewish immigrant from the Holland Amerika line.
+        </td>
+        <td>
+            H: 24 cm<br>W: 28 cm
+        </td>
+        <td>
+            <span class="lightbox-link" onclick="openLightbox('item4')">
+                View Details
+            </span>
+        </td>
+    </tr>
+	
+	<!-- ITEM 5 -->
+    <tr>
+        <td class="main-photo-col">
+            <img src="../Photos_Catalog_Peter_Zee/Two_Marine_Paintings/Pair_Marine_1_Front.jpg" alt="Pair_marine">
+        </td>
+        <td>
+            <strong>Lot 5: A pair of marine paintings on canvas</strong><br>
+            Two marine paintings on canvas.
+        </td>
+        <td>
+           H: 20 cm<br>W: 22 cm
+        </td>
+        <td>
+            <span class="lightbox-link" onclick="openLightbox('item5')">
+                View Details
+            </span>
+        </td>
+    </tr>
+
+	<!-- ITEM 6 -->
+    <tr>
+        <td class="main-photo-col">
+            <img src="../Photos_Catalog_Peter_Zee/Haarlem_Drawing/Haarlem_Drawing_Front.jpg" alt="Haarlem Drawing">
+        </td>
+        <td>
+            <strong>Lot 6: A drawing of Haarlem</strong><br>
+            A drawing of Haarlem signed by A. Hemert (Antoon van Hemert (1883 - 1944))
+        </td>
+        <td>
+           H: 40 cm<br>W: 50 cm
+        </td>
+        <td>
+            <span class="lightbox-link" onclick="openLightbox('item6')">
+                View Details
+            </span>
+        </td>
+    </tr>
+	
+	<!-- ITEM 7 -->
+    <tr>
+        <td class="main-photo-col">
+            <img src="../Photos_Catalog_Peter_Zee/N_Schuring/N_Schuring_Front.jpg" alt="Schuring">
+        </td>
+        <td>
+            <strong>Lot 7: A marine painting</strong><br>
+            A marine painting signed N. Schuring '58
+        </td>
+        <td>
+           H: 50 cm<br>W: 60 cm
+        </td>
+        <td>
+            <span class="lightbox-link" onclick="openLightbox('item7')">
+                View Details
+            </span>
+        </td>
+    </tr>
+	
+		<!-- ITEM 8 -->
+    <tr>
+        <td class="main-photo-col">
+            <img src="../Photos_Catalog_Peter_Zee/Sculpture_Marioton/Marioton_Sculpture.jpeg" alt="Marioton">
+        </td>
+        <td>
+            <strong>Lot 8: A sculpture in spelter (?) </strong><br>
+            An art nouveau sculpture by Eugene Marioton (1857 - 1933)
+        </td>
+        <td>
+           H: 100 cm<br>W: 20 cm<br>D: 20 cm
+        </td>
+        <td>
+            <span class="lightbox-link" onclick="openLightbox('item8')">
+                View Details
+            </span>
+        </td>
+    </tr>
+	
+			<!-- ITEM 9 -->
+    <tr>
+        <td class="main-photo-col">
+            <img src="../Photos_Catalog_Peter_Zee/Remington/Remington_Detail(8).jpeg" alt="Remington">
+        </td>
+        <td>
+            <strong>Lot 9: A Remington Rifle </strong><br>
+            A Remington rifle dated 1857
+        </td>
+        <td>
+           H: 150 cm<br>W: 15 cm<br>D: 5 cm
+        </td>
+        <td>
+            <span class="lightbox-link" onclick="openLightbox('item9')">
+                View Details
+            </span>
+        </td>
+    </tr>
+	
+				<!-- ITEM 10 -->
+    <tr>
+        <td class="main-photo-col">
+            <img src="../Photos_Catalog_Peter_Zee/Safe/Safe_Front.jpeg" alt="Safe">
+        </td>
+        <td>
+            <strong>Lot 10: An old safe </strong><br>
+            A very heavy Safe
+        </td>
+        <td>
+           H: 120 cm<br>W: 80 cm<br>D: 75 cm
+        </td>
+        <td>
+            <span class="lightbox-link" onclick="openLightbox('item10')">
+                View Details
+            </span>
+        </td>
+    </tr>
+	
+					<!-- ITEM 11 -->
+    <tr>
+        <td class="main-photo-col">
+            <img src="../Photos_Catalog_Peter_Zee/Kappetein_Trunk/Kappetein_Trunk.jpeg" alt="Kappetein">
+        </td>
+        <td>
+            <strong>Lot 11: A Kappetein Trunk </strong><br>
+            A Kappetein Trunk
+        </td>
+        <td>
+           H: 50 cm<br>W: 80 cm<br>D: 60 cm
+        </td>
+        <td>
+            <span class="lightbox-link" onclick="openLightbox('item11')">
+                View Details
+            </span>
+        </td>
+    </tr>
+	
+						<!-- ITEM 12 -->
+    <tr>
+        <td class="main-photo-col">
+            <img src="../Photos_Catalog_Peter_Zee/Gold_Balance_Scale/Gold_Balance_Scale.jpeg" alt="Scale">
+        </td>
+        <td>
+            <strong>Lot 12: A Precision Gold Balance Scale </strong><br>
+            With accompanying set of precision weights.
+        </td>
+        <td>
+           H: 50 cm<br>W: 70 cm<br>D: 40 cm
+        </td>
+        <td>
+            <span class="lightbox-link" onclick="openLightbox('item12')">
+                View Details
+            </span>
+        </td>
+    </tr>
+	
+							<!-- ITEM 13 -->
+    <tr>
+        <td class="main-photo-col">
+            <img src="../Photos_Catalog_Peter_Zee/Gouda_Vase/Gouda_Vase(1).jpeg" alt="Vase">
+        </td>
+        <td>
+            <strong>Lot 13: A Gouda Vase </strong><br>
+            A Gouda Vase
+        </td>
+        <td>
+           H: 50 cm<br>W: 20 cm<br>D: 20 cm
+        </td>
+        <td>
+            <span class="lightbox-link" onclick="openLightbox('item13')">
+                View Details
+            </span>
+        </td>
+    </tr>
+	
+								<!-- ITEM 14 -->
+    <tr>
+        <td class="main-photo-col">
+            <img src="../Photos_Catalog_Peter_Zee/Cameras/Agfa_Standard_Folding(1).jpg" alt="Cameras">
+        </td>
+        <td>
+            <strong>Lot 14: Several antique cameras </strong><br>
+            Including Agfa Standard Folding, Agfa Synchro Box, Agfa Clack and Polaroid 103.
+        </td>
+        <td>
+            Various measures
+        </td>
+        <td>
+            <span class="lightbox-link" onclick="openLightbox('item14')">
+                View Details
+            </span>
+        </td>
+    </tr>
+	
+									<!-- ITEM 15 -->
+    <tr>
+        <td class="main-photo-col">
+            <img src="../Photos_Catalog_Peter_Zee/Bureau/Bureau(1).jpg" alt="Bureau">
+        </td>
+        <td>
+            <strong>Lot 15: A Bureau</strong><br>
+            A large design bureau in L with chest of drawers.
+        </td>
+        <td>
+            H: 77 cm<br>W: 180 cm<br>D: 80 cm<br><br>H:70 cm<br>W: 132 cm<br>D: 57 cm
+        </td>
+        <td>
+            <span class="lightbox-link" onclick="openLightbox('item15')">
+                View Details
+            </span>
+        </td>
+    </tr>
+	
+    </tbody>
+</table>
+
+
+<!-- LIGHTBOX 1 -->
+<div id="lightbox-item1" class="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+        <span class="close" onclick="event.stopPropagation(); this.closest('.lightbox').style.display='none'; closeCurrent();">&times;</span>
+        <img id="lightbox-img-item1" src="" alt="">
+        <a href="#" class="prev" onclick="event.stopPropagation(); changeSlide('item1', -1); return false;">&#10094;</a>
+        <a href="#" class="next" onclick="event.stopPropagation(); changeSlide('item1', 1); return false;">&#10095;</a>
+    </div>
+
+    <div class="image-list" data-item="item1" style="display:none;">
+        <img src="../Photos_Catalog_Peter_Zee/L_Meyer/L_Meyer_Full.jpg">
+        <img src="../Photos_Catalog_Peter_Zee/L_Meyer/L_Meyer_Back.png">
+        <img src="../Photos_Catalog_Peter_Zee/L_Meyer/L_Meyer_Detail(1).jpg">
+        <img src="../Photos_Catalog_Peter_Zee/L_Meyer/L_Meyer_Detail(2).jpg">
+        <img src="../Photos_Catalog_Peter_Zee/L_Meyer/L_Meyer_Detail(3).jpg">
+        <img src="../Photos_Catalog_Peter_Zee/L_Meyer/L_Meyer_Detail(4).jpg">
+    </div>
+</div>
+
+<!-- LIGHTBOX 2 -->
+<div id="lightbox-item2" class="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+        <span class="close" onclick="event.stopPropagation(); this.closest('.lightbox').style.display='none'; closeCurrent();">&times;</span>
+        <img id="lightbox-img-item2" src="" alt="">
+        <a href="#" class="prev" onclick="event.stopPropagation(); changeSlide('item2', -1); return false;">&#10094;</a>
+        <a href="#" class="next" onclick="event.stopPropagation(); changeSlide('item2', 1); return false;">&#10095;</a>
+    </div>
+
+    <div class="image-list" data-item="item2" style="display:none;">
+        <img src="../Photos_Catalog_Peter_Zee/Marine_Painting_Board/Marine_Front.jpg">
+        <img src="../Photos_Catalog_Peter_Zee/Marine_Painting_Board/Marine_Back.jpg">
+        <img src="../Photos_Catalog_Peter_Zee/Marine_Painting_Board/Marine_Detail_Signature.jpg">
+    </div>
+</div>
+
+<!-- LIGHTBOX 3 -->
+<div id="lightbox-item3" class="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+        <span class="close" onclick="event.stopPropagation(); this.closest('.lightbox').style.display='none'; closeCurrent();">&times;</span>
+        <img id="lightbox-img-item3" src="" alt="">
+        <a href="#" class="prev" onclick="event.stopPropagation(); changeSlide('item3', -1); return false;">&#10094;</a>
+        <a href="#" class="next" onclick="event.stopPropagation(); changeSlide('item3', 1); return false;">&#10095;</a>
+    </div>
+	
+	<div class="image-list" data-item="item3" style="display:none;">
+        <img src="../Photos_Catalog_Peter_Zee/Koekkoek/Koekkoek_Front.jpg">
+		<img src="../Photos_Catalog_Peter_Zee/Koekkoek/Koekkoek_Detail(1).jpg">
+        <img src="../Photos_Catalog_Peter_Zee/Koekkoek/Koekkoek_Detail(2).jpg">
+        <img src="../Photos_Catalog_Peter_Zee/Koekkoek/Koekkoek_Detail(3).jpg">
+        <img src="../Photos_Catalog_Peter_Zee/Koekkoek/Koekkoek_Detail(4).jpg">
+        <img src="../Photos_Catalog_Peter_Zee/Koekkoek/Koekkoek_Detail(5).jpg">
+        <img src="../Photos_Catalog_Peter_Zee/Koekkoek/Koekkoek_Back.jpg">
+	</div>
+</div>
+	
+	<!-- LIGHTBOX 4 -->
+<div id="lightbox-item4" class="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+        <span class="close" onclick="event.stopPropagation(); this.closest('.lightbox').style.display='none'; closeCurrent();">&times;</span>
+        <img id="lightbox-img-item4" src="" alt="">
+        <a href="#" class="prev" onclick="event.stopPropagation(); changeSlide('item4', -1); return false;">&#10094;</a>
+        <a href="#" class="next" onclick="event.stopPropagation(); changeSlide('item4', 1); return false;">&#10095;</a>
+    </div>
+
+    <div class="image-list" data-item="item4" style="display:none;">
+        <img src="../Photos_Catalog_Peter_Zee/C_Jocker_Painting/Painting_Jewish_Lady_Full.jpeg">
+        <img src="../Photos_Catalog_Peter_Zee/C_Jocker_Painting/Painting_Jewish_Lady_Signature(1).jpeg">
+        <img src="../Photos_Catalog_Peter_Zee/C_Jocker_Painting/Painting_Jewish_Lady_Signature(2).jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/C_Jocker_Painting/Painting_Jewish_Lady_Signature(3).jpeg">
+    </div>
+</div>
+
+	<!-- LIGHTBOX 5 -->
+<div id="lightbox-item5" class="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+        <span class="close" onclick="event.stopPropagation(); this.closest('.lightbox').style.display='none'; closeCurrent();">&times;</span>
+        <img id="lightbox-img-item5" src="" alt="">
+        <a href="#" class="prev" onclick="event.stopPropagation(); changeSlide('item5', -1); return false;">&#10094;</a>
+        <a href="#" class="next" onclick="event.stopPropagation(); changeSlide('item5', 1); return false;">&#10095;</a>
+    </div>
+
+    <div class="image-list" data-item="item5" style="display:none;">
+        <img src="../Photos_Catalog_Peter_Zee/Two_Marine_Paintings/Pair_Marine_1_Front.jpg">
+        <img src="../Photos_Catalog_Peter_Zee/Two_Marine_Paintings/Pair_Marine_2_Front.jpg">
+        <img src="../Photos_Catalog_Peter_Zee/Two_Marine_Paintings/Pair_Marine_1_Signature.jpg">
+		<img src="../Photos_Catalog_Peter_Zee/Two_Marine_Paintings/Pair_Marine_2_Signature.jpg">
+    </div>
+</div>
+
+	<!-- LIGHTBOX 6 -->
+<div id="lightbox-item6" class="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+        <span class="close" onclick="event.stopPropagation(); this.closest('.lightbox').style.display='none'; closeCurrent();">&times;</span>
+        <img id="lightbox-img-item6" src="" alt="">
+        <a href="#" class="prev" onclick="event.stopPropagation(); changeSlide('item6', -1); return false;">&#10094;</a>
+        <a href="#" class="next" onclick="event.stopPropagation(); changeSlide('item6', 1); return false;">&#10095;</a>
+    </div>
+
+    <div class="image-list" data-item="item6" style="display:none;">
+        <img src="../Photos_Catalog_Peter_Zee/Haarlem_Drawing/Haarlem_Drawing_Front.jpg">
+        <img src="../Photos_Catalog_Peter_Zee/Haarlem_Drawing/Haarlem_Drawing_Signature(1).jpg">
+        <img src="../Photos_Catalog_Peter_Zee/Haarlem_Drawing/Haarlem_Drawing_Signature(2).jpg">
+    </div>
+</div>
+
+	<!-- LIGHTBOX 7 -->
+<div id="lightbox-item7" class="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+        <span class="close" onclick="event.stopPropagation(); this.closest('.lightbox').style.display='none'; closeCurrent();">&times;</span>
+        <img id="lightbox-img-item7" src="" alt="">
+        <a href="#" class="prev" onclick="event.stopPropagation(); changeSlide('item7', -1); return false;">&#10094;</a>
+        <a href="#" class="next" onclick="event.stopPropagation(); changeSlide('item7', 1); return false;">&#10095;</a>
+    </div>
+
+    <div class="image-list" data-item="item7" style="display:none;">
+        <img src="../Photos_Catalog_Peter_Zee/N_Schuring/N_Schuring_Front.jpg">
+        <img src="../Photos_Catalog_Peter_Zee/N_Schuring/N_Schuring_Signature.jpg">
+    </div>
+</div>
+
+	<!-- LIGHTBOX 8 -->
+<div id="lightbox-item8" class="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+        <span class="close" onclick="event.stopPropagation(); this.closest('.lightbox').style.display='none'; closeCurrent();">&times;</span>
+        <img id="lightbox-img-item8" src="" alt="">
+        <a href="#" class="prev" onclick="event.stopPropagation(); changeSlide('item8', -1); return false;">&#10094;</a>
+        <a href="#" class="next" onclick="event.stopPropagation(); changeSlide('item8', 1); return false;">&#10095;</a>
+    </div>
+
+    <div class="image-list" data-item="item8" style="display:none;">
+        <img src="../Photos_Catalog_Peter_Zee/Sculpture_Marioton/Marioton_Sculpture.jpeg">
+        <img src="../Photos_Catalog_Peter_Zee/Sculpture_Marioton/Marioton_Sculpture_Detail(1).jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Sculpture_Marioton/Marioton_Sculpture_Detail(2).jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Sculpture_Marioton/Marioton_Sculpture_Signature.jpeg">
+    </div>
+</div>
+
+	<!-- LIGHTBOX 9 -->
+<div id="lightbox-item9" class="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+        <span class="close" onclick="event.stopPropagation(); this.closest('.lightbox').style.display='none'; closeCurrent();">&times;</span>
+        <img id="lightbox-img-item9" src="" alt="">
+        <a href="#" class="prev" onclick="event.stopPropagation(); changeSlide('item9', -1); return false;">&#10094;</a>
+        <a href="#" class="next" onclick="event.stopPropagation(); changeSlide('item9', 1); return false;">&#10095;</a>
+    </div>
+
+    <div class="image-list" data-item="item9" style="display:none;">
+        <img src="../Photos_Catalog_Peter_Zee/Remington/Remington_Detail(1).jpeg">
+        <img src="../Photos_Catalog_Peter_Zee/Remington/Remington_Detail(2).jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Remington/Remington_Detail(3).jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Remington/Remington_Detail(4).jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Remington/Remington_Detail(5).jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Remington/Remington_Detail(6).jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Remington/Remington_Detail(7).jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Remington/Remington_Detail(8).jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Remington/Remington_Detail(9).jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Remington/Remington_Detail(10).jpeg">
+    </div>
+</div>
+
+	<!-- LIGHTBOX 10 -->
+<div id="lightbox-item10" class="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+        <span class="close" onclick="event.stopPropagation(); this.closest('.lightbox').style.display='none'; closeCurrent();">&times;</span>
+        <img id="lightbox-img-item10" src="" alt="">
+        <a href="#" class="prev" onclick="event.stopPropagation(); changeSlide('item10', -1); return false;">&#10094;</a>
+        <a href="#" class="next" onclick="event.stopPropagation(); changeSlide('item10', 1); return false;">&#10095;</a>
+    </div>
+
+    <div class="image-list" data-item="item10" style="display:none;">
+        <img src="../Photos_Catalog_Peter_Zee/Safe/Safe_Right.jpeg">
+        <img src="../Photos_Catalog_Peter_Zee/Safe/Safe_Open.jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Safe/Safe_Open_Detail.jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Safe/Safe_Detail.jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Safe/Safe_Detail(2).jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Safe/Safe_Lock_Detail(1).jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Safe/Safe_Lock_Detail(2).jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Safe/Safe_Inner_Separate_Lock(1).jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Safe/Safe_Inner_Separate_Lock(2).jpeg">
+    </div>
+</div>
+
+	<!-- LIGHTBOX 11 -->
+<div id="lightbox-item11" class="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+        <span class="close" onclick="event.stopPropagation(); this.closest('.lightbox').style.display='none'; closeCurrent();">&times;</span>
+        <img id="lightbox-img-item11" src="" alt="">
+        <a href="#" class="prev" onclick="event.stopPropagation(); changeSlide('item11', -1); return false;">&#10094;</a>
+        <a href="#" class="next" onclick="event.stopPropagation(); changeSlide('item11', 1); return false;">&#10095;</a>
+    </div>
+
+    <div class="image-list" data-item="item11" style="display:none;">
+        <img src="../Photos_Catalog_Peter_Zee/Kappetein_Trunk/Kappetein_Trunk.jpeg">
+        <img src="../Photos_Catalog_Peter_Zee/Kappetein_Trunk/Kappetein_Trunk_L.jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Kappetein_Trunk/Kappetein_Trunk_R.jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Kappetein_Trunk/Kappetein_Trunk_detail.jpeg">
+    </div>
+</div>
+
+	<!-- LIGHTBOX 12 -->
+<div id="lightbox-item12" class="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+        <span class="close" onclick="event.stopPropagation(); this.closest('.lightbox').style.display='none'; closeCurrent();">&times;</span>
+        <img id="lightbox-img-item12" src="" alt="">
+        <a href="#" class="prev" onclick="event.stopPropagation(); changeSlide('item12', -1); return false;">&#10094;</a>
+        <a href="#" class="next" onclick="event.stopPropagation(); changeSlide('item12', 1); return false;">&#10095;</a>
+    </div>
+
+    <div class="image-list" data-item="item12" style="display:none;">
+        <img src="../Photos_Catalog_Peter_Zee/Gold_Balance_Scale/Gold_Balance_Scale.jpeg">
+        <img src="../Photos_Catalog_Peter_Zee/Gold_Balance_Scale/Gold_Balance_Scale_Detail(1).jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Gold_Balance_Scale/Gold_Balance_Scale_Detail(2).jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Gold_Balance_Scale/Gold_Balance_Scale_Detail(3).jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Gold_Balance_Scale/Gold_Balance_Scale_Close.jpeg">
+    </div>
+</div>
+
+	<!-- LIGHTBOX 13 -->
+<div id="lightbox-item13" class="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+        <span class="close" onclick="event.stopPropagation(); this.closest('.lightbox').style.display='none'; closeCurrent();">&times;</span>
+        <img id="lightbox-img-item13" src="" alt="">
+        <a href="#" class="prev" onclick="event.stopPropagation(); changeSlide('item13', -1); return false;">&#10094;</a>
+        <a href="#" class="next" onclick="event.stopPropagation(); changeSlide('item13', 1); return false;">&#10095;</a>
+    </div>
+
+    <div class="image-list" data-item="item13" style="display:none;">
+        <img src="../Photos_Catalog_Peter_Zee/Gouda_Vase/Gouda_Vase(1).jpeg">
+        <img src="../Photos_Catalog_Peter_Zee/Gouda_Vase/Gouda_Vase(2).jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Gouda_Vase/Gouda_Vase_Bottom(1).jpeg">
+		<img src="../Photos_Catalog_Peter_Zee/Gouda_Vase/Gouda_Vase_Bottom(2).jpeg">
+    </div>
+</div>
+
+	<!-- LIGHTBOX 14 -->
+<div id="lightbox-item14" class="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+        <span class="close" onclick="event.stopPropagation(); this.closest('.lightbox').style.display='none'; closeCurrent();">&times;</span>
+        <img id="lightbox-img-item14" src="" alt="">
+        <a href="#" class="prev" onclick="event.stopPropagation(); changeSlide('item14', -1); return false;">&#10094;</a>
+        <a href="#" class="next" onclick="event.stopPropagation(); changeSlide('item14', 1); return false;">&#10095;</a>
+    </div>
+
+    <div class="image-list" data-item="item14" style="display:none;">
+        <img src="../Photos_Catalog_Peter_Zee/Cameras/Agfa_Standard_Folding(1).jpg">
+        <img src="../Photos_Catalog_Peter_Zee/Cameras/Agfa_Standard_Folding(2).jpg">
+		<img src="../Photos_Catalog_Peter_Zee/Cameras/Agfa_Standard_Folding(3).jpg">
+		<img src="../Photos_Catalog_Peter_Zee/Cameras/Agfa_Standard_Folding(4).jpg">
+		<img src="../Photos_Catalog_Peter_Zee/Cameras/Agfa_Synchro_Box(1).jpg">
+		<img src="../Photos_Catalog_Peter_Zee/Cameras/Agfa_Synchro_Box(2).jpg">
+		<img src="../Photos_Catalog_Peter_Zee/Cameras/Agfa_Synchro_Box(3).jpg">
+		<img src="../Photos_Catalog_Peter_Zee/Cameras/Clack_Agfa_Front.jpg">
+		<img src="../Photos_Catalog_Peter_Zee/Cameras/Clack_Agfa_Top.jpg">
+		<img src="../Photos_Catalog_Peter_Zee/Cameras/Polaroid_103.jpg">
+		<img src="../Photos_Catalog_Peter_Zee/Cameras/Polaroid_103_Case.jpg">
+    </div>
+</div>
+
+	<!-- LIGHTBOX 15 -->
+<div id="lightbox-item15" class="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+        <span class="close" onclick="event.stopPropagation(); this.closest('.lightbox').style.display='none'; closeCurrent();">&times;</span>
+        <img id="lightbox-img-item15" src="" alt="">
+        <a href="#" class="prev" onclick="event.stopPropagation(); changeSlide('item15', -1); return false;">&#10094;</a>
+        <a href="#" class="next" onclick="event.stopPropagation(); changeSlide('item15', 1); return false;">&#10095;</a>
+    </div>
+
+    <div class="image-list" data-item="item15" style="display:none;">
+        <img src="../Photos_Catalog_Peter_Zee/Bureau/Bureau(1).jpg">
+        <img src="../Photos_Catalog_Peter_Zee/Bureau/Bureau(2).jpg">
+		<img src="../Photos_Catalog_Peter_Zee/Bureau/Bureau(3).jpg">
+		<img src="../Photos_Catalog_Peter_Zee/Bureau/Bureau(4).jpg">
+		<img src="../Photos_Catalog_Peter_Zee/Bureau/Bureau(5).jpg">
+		<img src="../Photos_Catalog_Peter_Zee/Bureau/Bureau(6).jpg">
+
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const slides = {};
+    const slideIndex = {};
+    let currentOpen = null; // 'item1' or 'item2' etc.
+    const touchState = {}; // store startX per lightbox id
+
+    // Initialize image lists
+    document.querySelectorAll('.image-list').forEach(list => {
+        const itemId = list.getAttribute('data-item');
+        // preserve original srcs, normalize backslashes only (if any)
+        slides[itemId] = Array.from(list.querySelectorAll('img'))
+            .map(img => (img.getAttribute('src') || '').replace(/\\/g, '/'));
+        slideIndex[itemId] = 0;
+
+        // Set up touch handlers per lightbox element for swipe
+        const lb = document.getElementById(`lightbox-${itemId}`);
+        if (lb) {
+            touchState[itemId] = { startX: 0, startY: 0, active: false };
+
+            lb.addEventListener('touchstart', (e) => {
+                if (!e.touches || e.touches.length === 0) return;
+                touchState[itemId].startX = e.touches[0].clientX;
+                touchState[itemId].startY = e.touches[0].clientY;
+                touchState[itemId].active = true;
+            }, { passive: true });
+
+            lb.addEventListener('touchend', (e) => {
+                if (!touchState[itemId].active) return;
+                const endX = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientX : null;
+                const endY = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientY : null;
+                touchState[itemId].active = false;
+                if (endX === null) return;
+
+                const dx = endX - touchState[itemId].startX;
+                const dy = endY - touchState[itemId].startY;
+
+                // ignore mostly-vertical swipes
+                if (Math.abs(dx) < 30 || Math.abs(dx) < Math.abs(dy)) return;
+
+                // left swipe -> next, right swipe -> prev
+                if (dx < 0) {
+                    changeSlide(itemId, 1);
+                } else {
+                    changeSlide(itemId, -1);
+                }
+            }, { passive: true });
+        }
+    });
+
+    // Expose functions to global scope (they're called from inline onclicks)
+    window.openLightbox = function(itemId) {
+        const lb = document.getElementById(`lightbox-${itemId}`);
+        if (!lb) return;
+        // ensure slides exist for this item
+        if (!slides[itemId] || slides[itemId].length === 0) return;
+        currentOpen = itemId;
+        slideIndex[itemId] = 0; // start from first image; remove if you want to preserve last index
+        lb.style.display = "block";
+        showSlide(itemId, slideIndex[itemId]);
+        // focus for keyboard navigation (not strictly necessary but helpful)
+        lb.setAttribute('tabindex', '-1');
+        lb.focus && lb.focus();
+    };
+
+    window.closeLightbox = function(event) {
+        // close only if clicked on backdrop (lightbox) - not on content
+        if (event.target.classList.contains('lightbox')) {
+            event.target.style.display = "none";
+            // if closing the currently open one, clear currentOpen
+            const id = event.target.id && event.target.id.replace('lightbox-', '');
+            if (id && id === currentOpen) currentOpen = null;
+        }
+    };
+
+    // helper when close button clicked
+    window.closeCurrent = function() {
+        if (!currentOpen) return;
+        const lb = document.getElementById(`lightbox-${currentOpen}`);
+        if (lb) lb.style.display = 'none';
+        currentOpen = null;
+    };
+
+    window.changeSlide = function(itemId, n) {
+        if (!slides[itemId] || slides[itemId].length === 0) return;
+        slideIndex[itemId] += n;
+        showSlide(itemId, slideIndex[itemId]);
+    };
+
+    window.showSlide = function(itemId, n) {
+        if (!slides[itemId] || slides[itemId].length === 0) return;
+        const total = slides[itemId].length;
+
+        // normalize index (wrap)
+        if (n >= total) slideIndex[itemId] = 0;
+        else if (n < 0) slideIndex[itemId] = total - 1;
+        else slideIndex[itemId] = n;
+
+        const imgEl = document.getElementById(`lightbox-img-${itemId}`);
+        if (!imgEl) return;
+        imgEl.src = slides[itemId][slideIndex[itemId]];
+    };
+
+    // Keyboard navigation for currently open lightbox
+    document.addEventListener('keydown', (e) => {
+        if (!currentOpen) return; // nothing open
+        if (e.key === 'Escape') {
+            // close the current one
+            const lb = document.getElementById(`lightbox-${currentOpen}`);
+            if (lb) lb.style.display = 'none';
+            currentOpen = null;
+        } else if (e.key === 'ArrowLeft') {
+            changeSlide(currentOpen, -1);
+        } else if (e.key === 'ArrowRight') {
+            changeSlide(currentOpen, 1);
+        }
+    });
+});
+</script>
+
+</body>
+</html>
