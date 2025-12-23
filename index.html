@@ -887,6 +887,24 @@
     </div>
 </div>
 
+		<!-- LIGHTBOX 20 -->
+<div id="lightbox-item20" class="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+        <span class="close" onclick="event.stopPropagation(); this.closest('.lightbox').style.display='none'; closeCurrent();">&times;</span>
+        <img id="lightbox-img-item20" src="" alt="">
+        <a href="#" class="prev" onclick="event.stopPropagation(); changeSlide('item20', -1); return false;">&#10094;</a>
+        <a href="#" class="next" onclick="event.stopPropagation(); changeSlide('item20', 1); return false;">&#10095;</a>
+    </div>
+
+    <div class="image-list" data-item="item20" style="display:none;">
+        <img src="./Projector/Keystone(1).jpg">
+		<img src="./Projector/Keystone(2).jpg">
+		<img src="./Projector/Keystone(3).jpg">
+		<img src="./Projector/Keystone(4).jpg">
+		<img src="./Projector/Keystone(5).jpg">
+    </div>
+</div>	
+
 		<!-- LIGHTBOX 21 -->
 <div id="lightbox-item21" class="lightbox" onclick="closeLightbox(event)">
     <div class="lightbox-content">
@@ -1044,3 +1062,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+
